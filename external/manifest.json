@@ -1,7 +1,11 @@
 {
   "version": "1.0.0.0",
-  "display_name": "Xbox One Kinect",
-  "download_":  "plugin_KinectOne.zip",
-  "changelog": "Allow Microsoft.Kinect trimming as we're replacing it anyway.",
-  "guid": "K2VRTEAM-AME2-APII-DVCE-DVCEKINECTV2"
+  "display_name": "Xbox 360 Kinect (NiTE)",
+  "download":  "plugin_Kinect360NiTE.zip",
+  "description": "Ame2 plugin for NiTE, including drivers for Kinect for Xbox 360.",
+  "guid": "K2VRTEAM-AME2-APII-DVCE-NITEKINECTV1",
+  "contract": "2.0.0.0",
+  "platform": "any",
+  "type": "device",
+  "author": "K2VR Team"
 }
