@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <RootNamespace>plugin_Kinect360NiTE</RootNamespace>
+    <Platforms>x64</Platforms>
+    <LangVersion>latest</LangVersion>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Labs.Controls" Version="11.3.1" />
+    <PackageReference Include="NiWrapper.Net" Version="2.2.0.14" />
+    <PackageReference Include="NiWrapper_NiTE.Net" Version="2.2.0.14" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="9.0.9" />
+    <PackageReference Include="System.ComponentModel.Composition.Registration" Version="9.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Runtime\**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"
+             Link="%(RecursiveDir)\%(Filename)%(Extension)" Visible="False" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Amethyst.Contract">
+      <HintPath>..\..\..\Amethyst.Contract\bin\x64\Debug\net8.0\Amethyst.Contract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
