@@ -198,8 +198,7 @@ public class Kinect360 : ITrackingDevice
         var newDevice = device.OpenDevice();
 
         if (!newDevice.HasSensor(Device.SensorType.Color) ||
-            !newDevice.HasSensor(Device.SensorType.Depth) ||
-            !newDevice.HasSensor(Device.SensorType.Ir)) return;
+            !newDevice.HasSensor(Device.SensorType.Depth)) return;
 
         if (CurrentSensor is not null)
         {
