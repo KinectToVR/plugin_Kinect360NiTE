@@ -1,11 +1,17 @@
 {
-  "version": "1.0.0.0",
-  "display_name": "Xbox 360 Kinect (NiTE)",
-  "download":  "plugin_Kinect360NiTE.zip",
+  "name": "Xbox 360 Kinect (NiTE)",
   "description": "Ame2 plugin for NiTE, including drivers for Kinect for Xbox 360.",
   "guid": "K2VRTEAM-AME2-APII-DVCE-NITEKINECTV1",
-  "contract": "2.0.0.0",
-  "platform": "any",
   "type": "device",
-  "author": "K2VR Team"
+  "author": "K2VR Team",
+  "artifacts": [
+    {
+      "version": "2.0.0.0",
+      "contract": "2.0.0.0",
+      "platform": "any",
+      "name": "Kinect V1 (NiTE)",
+      "download": "plugin_Kinect360NiTE.zip",
+      "changelog": "Initial release of the NiTE Kinect V1 plugin."
+    }
+  ]
 }

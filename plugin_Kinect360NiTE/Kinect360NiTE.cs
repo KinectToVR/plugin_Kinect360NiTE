@@ -21,7 +21,7 @@ namespace plugin_Kinect360NiTE;
 [ExportMetadata("Name", "Xbox 360 Kinect (NiTE)")]
 [ExportMetadata("Guid", "K2VRTEAM-AME2-APII-DVCE-NITEKINECTV1")]
 [ExportMetadata("Publisher", "K2VR Team")]
-[ExportMetadata("Version", "1.0.0.1")]
+[ExportMetadata("Version", "2.0.0.0")]
 [ExportMetadata("Website", "https://github.com/KinectToVR/plugin_Kinect360NiTE")]
 [ExportMetadata("DependencyLink", "https://docs.k2vr.tech/{0}/360/setup/")]
 [ExportMetadata("CoreSetupData", typeof(SetupData))]
