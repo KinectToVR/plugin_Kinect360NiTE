@@ -7,6 +7,7 @@ using System.Linq;
 using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Amethyst.Contract;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
@@ -70,26 +71,22 @@ public class Kinect360 : ITrackingDevice
                     [
                         new KeyInputAction<bool>
                         {
-                            Name = "Left Pause", Description = "Left hand pause gesture",
-                            Guid = "PauseLeft_One", GetHost = () => HostStatic
+                            Name = "Left Pause", Description = "Left hand pause gesture", Guid = "PauseLeft_One", GetHost = () => HostStatic
                         },
                         new KeyInputAction<bool>
                         {
-                            Name = "Left Point", Description = "Left hand point gesture",
-                            Guid = "PointLeft_One", GetHost = () => HostStatic
+                            Name = "Left Point", Description = "Left hand point gesture", Guid = "PointLeft_One", GetHost = () => HostStatic
                         }
                     ],
                     TrackedJointType.JointHandRight =>
                     [
                         new KeyInputAction<bool>
                         {
-                            Name = "Right Pause", Description = "Right hand pause gesture",
-                            Guid = "PauseRight_One", GetHost = () => HostStatic
+                            Name = "Right Pause", Description = "Right hand pause gesture", Guid = "PauseRight_One", GetHost = () => HostStatic
                         },
                         new KeyInputAction<bool>
                         {
-                            Name = "Right Point", Description = "Right hand point gesture",
-                            Guid = "PointRight_One", GetHost = () => HostStatic
+                            Name = "Right Point", Description = "Right hand point gesture", Guid = "PointRight_One", GetHost = () => HostStatic
                         }
                     ],
                     _ => []
@@ -115,7 +112,7 @@ public class Kinect360 : ITrackingDevice
         get => new($"https://docs.k2vr.tech/{Host?.DocsLanguageCode ?? "en"}/one/troubleshooting/");
     }
 
-    public void OnLoad()
+    public Task OnLoad()
     {
         // Backup the plugin host
         HostStatic = Host;
@@ -151,11 +148,14 @@ public class Kinect360 : ITrackingDevice
         {
             Host?.Log($"Error setting joint names! Message: {e.Message}", LogSeverity.Error);
         }
+
+        return Task.CompletedTask;
     }
 
-    public void Initialize()
+    public async Task Initialize()
     {
         // OpenNI
+        await Task.Run(() =>
         {
             OpenNI.Status result;
 
@@ -188,7 +188,7 @@ public class Kinect360 : ITrackingDevice
                     Host.Log($"Couldn't initialize the Kinect sensor! Status: {DeviceStatusString} ({result})", LogSeverity.Warning);
                     break;
             }
-        }
+        });
     }
 
     public void OnDeviceConnected(DeviceInfo device)
@@ -364,7 +364,7 @@ public class Kinect360 : ITrackingDevice
         Host?.RefreshStatusInterface();
     }
 
-    public void Shutdown()
+    public Task Shutdown()
     {
         NiTE.Status result;
 
@@ -407,6 +407,8 @@ public class Kinect360 : ITrackingDevice
                 Host.Log("Tried to shutdown the Kinect sensor, but a native exception occurred!", LogSeverity.Error);
                 break;
         }
+        
+        return Task.CompletedTask;
     }
 
     public void Update()
